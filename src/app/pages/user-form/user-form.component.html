@@ -1,1 +1,31 @@
-<p>user-form works!</p>
+<form [formGroup]="userForm" (ngSubmit)="getDataForm()">
+    <div class="mb-3">
+        <label for="first_name">Nombre</label>
+        <input type="text" placeholder="Introduce el nombre" class="form-control" name="first_name" formControlName="first_name">
+    </div>
+    <div class="mb-3">
+        <label for="last_name">Apellidos</label>
+        <input type="text" placeholder="Introduce los apellidos" class="form-control" name="last_name" formControlName="last_name">
+    </div>
+    <div class="mb-3">
+        <label for="username">Nombre de usuario</label>
+        <input type="text" placeholder="Introduce el nombre de usuario" class="form-control" name="username" formControlName="username">
+    </div>
+    <div class="mb-3">
+        <label for="email">Email</label>
+        <input type="email" placeholder="Introduce el email"  class="form-control" name="email" formControlName="email">
+    </div>
+    <div class="mb-3">
+        <label for="image">Imagen</label>
+        <input type="text" placeholder="Introduce la url de la imagen" class="form-control" name="imagen" formControlName="image">
+    </div>
+    <div class="mb-3">
+        <label for="password">Contraseña</label>
+        <input type="password" placeholder="Introduce la contraseña" class="form-control" name="password" formControlName="password">
+    </div>
+</form>
+
+
+
+
+
