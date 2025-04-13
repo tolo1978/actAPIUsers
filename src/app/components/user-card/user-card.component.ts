@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ButtonsComponent } from '../buttons/buttons.component';
+import { Iuser } from '../../interfaces/iuser.interface';
 
 @Component({
   selector: 'app-user-card',
@@ -8,5 +9,6 @@ import { ButtonsComponent } from '../buttons/buttons.component';
   styleUrl: './user-card.component.css'
 })
 export class UserCardComponent {
+  @Input() user!: Iuser;
 
 }

@@ -14,15 +14,17 @@ export class HomeComponent {
   UserService = inject(UsersService);
 
 
-  ngOninit() {
+  ngOnInit() {
 
-    this.getUsers()
+    this.getUsers();
 
     }
+    
     async getUsers() {
     try {
       let response = await this.UserService.getAll()
-      console.log(response);
+      console.log(response.results);
+      this.arrayUsers = response.results
       } catch (error) {
     }
   }
