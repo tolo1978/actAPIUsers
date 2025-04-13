@@ -18,22 +18,11 @@ export class HomeComponent {
 
     this.getUsers()
 
-
-    // async chargeData(page: number = 1) {
-    //   try {
-    //     let response = await this.usersService.getAll(page)
-    //     console.log(response);
-    //     this.totalPage = response.total_pages;
-    //     this.currentPage = response.page;
-    //     this.arrUsers = response.results;
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
     }
     async getUsers() {
     try {
       let response = await this.UserService.getAll()
-      console.log(response.results);
+      console.log(response);
       } catch (error) {
     }
   }
