@@ -9,8 +9,8 @@ export class UsersService {
   private endPoint: string = 'https://peticiones.online/api/users';
   private httpClient = inject(HttpClient);
 
-    getAll():Promise<any> {
-      return lastValueFrom(this.httpClient.get<any>(this.endPoint));
+    getAll(page: number):Promise<any> {
+      return lastValueFrom(this.httpClient.get<any>(`${this.endPoint}/?pag=${page}`));
   }
    getbyID(id: string):Promise<any> {
     return lastValueFrom(this.httpClient.get<any>(`${this.endPoint}/${id}`));
