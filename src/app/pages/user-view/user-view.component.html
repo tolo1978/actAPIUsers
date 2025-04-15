@@ -1,13 +1,13 @@
 <div class="card mb-3">
     <div class="row g-5">
       <div class="col-md-4">
-        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D" class="img-fluid rounded-start" alt="...">
+        <img [src]="user?.image" class="img-fluid rounded-start" [alt]="user?.last_name">
       </div>
       <div class="col-md-8 d-flex align-items-center">
         <div class="card-body d-flex flex-column" style="height: 100%;">
-          <h2 class="card-title">Nombre y apellidos del usuario</h2>
-          <h5 class="card-title"><strong>Nombre de usuario:</strong> name</h5>
-          <h5 class="card-title"><strong>Email:</strong> exampleexample.es</h5>
+          <h2 class="card-title">{{user?.first_name}} {{user?.last_name}}</h2>
+          <h5 class="card-title"><strong>Nombre de usuario:</strong> {{user?.username}}</h5>
+          <h5 class="card-title"><strong>Email:</strong> {{user?.email}}.es</h5>
   
           <div class="mt-auto">
             <app-buttons></app-buttons> 
