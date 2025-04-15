@@ -10,7 +10,7 @@ export class UsersService {
   private httpClient = inject(HttpClient);
 
     getAll(page: number):Promise<any> {
-      return lastValueFrom(this.httpClient.get<any>(`${this.endPoint}/?pag=${page}`));
+      return lastValueFrom(this.httpClient.get<any>(`${this.endPoint}/?page=${page}`));
   }
    getbyID(id: string):Promise<any> {
     return lastValueFrom(this.httpClient.get<any>(`${this.endPoint}/${id}`));
