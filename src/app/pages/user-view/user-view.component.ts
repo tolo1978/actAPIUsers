@@ -18,7 +18,7 @@ export class UserViewComponent {
     let id = String(this.id)
     
     try {
-      this.user = await this.userService.getbyID(this.id!)
+      this.user = await this.userService.getbyID(id)
       console.log(this.user)
 
     } catch (error) {

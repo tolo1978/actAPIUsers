@@ -12,11 +12,11 @@ export class UsersService {
     getAll(page: number):Promise<any> {
       return lastValueFrom(this.httpClient.get<any>(`${this.endPoint}/?page=${page}`));
   }
-   getbyID(id: string):Promise<any> {
-    return lastValueFrom(this.httpClient.get<any>(`${this.endPoint}/${id}`));
+   getbyID(_id: string):Promise<any> {
+    return lastValueFrom(this.httpClient.get<any>(`${this.endPoint}/${_id}`));
   }
-   delete(id: string):Promise<any> {
-    return lastValueFrom(this.httpClient.delete<any>(`${this.endPoint}/${id}`));
+   delete(_id: string):Promise<any> {
+    return lastValueFrom(this.httpClient.delete<any>(`${this.endPoint}/${_id}`));
   }
    insert(user: string):Promise<any> {
     return lastValueFrom(this.httpClient.post<any>(this.endPoint, user));
