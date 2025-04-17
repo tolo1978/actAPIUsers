@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-buttons',
@@ -9,6 +10,10 @@ import { RouterLink } from '@angular/router';
 })
 export class ButtonsComponent {
   @Input() id: string | undefined = "";
+  @Input() return: boolean = false;
+  UserService = inject(UsersService);
+  
+  
 
 
 }

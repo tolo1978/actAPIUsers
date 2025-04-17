@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import {AbstractControl, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-form',
@@ -9,21 +9,43 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class UserFormComponent {
   userForm: FormGroup = new FormGroup ({
-    firstName: new FormControl(''),
-    last_name: new FormControl(''),
-    username: new FormControl(''),
-    email: new FormControl(''),
-    image: new FormControl(''),
-    password: new FormControl(''),
-    
+    first_name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    last_name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4)
+    ]),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\w+\@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
+    ]),
+    image: new FormControl('',
+      [
+        Validators.required
+      ]),
+      password: new FormControl("", [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(16)
+      ]),
+      repitepassword: new FormControl("", []),
+      }, [])
+  
 
+    getDataForm() {
+      console.log(this.userForm.value)
+      this.userForm.reset()
+    }
 
-
-    })
-
-    getDataForm(){
-  }
-
+    checkControl(controlName: string, errorName: string): boolean | undefined {
+      return this.userForm.get(controlName)?.hasError(errorName) && this.userForm.get(controlName)?.touched
+    }
 
   }
 

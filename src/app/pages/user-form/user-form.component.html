@@ -2,27 +2,71 @@
     <div class="mb-3">
         <label for="first_name">Nombre</label>
         <input type="text" placeholder="Introduce el nombre" class="form-control" name="first_name" formControlName="first_name">
+        @if(checkControl('name', 'required')){
+            <p class="error">El campo es obligatorio</p>
+            }
+            @if(checkControl('first_name', 'minlength')){
+            <p class="error">El campo tiene que tener al menos 3 caracteres</p>
+            }
     </div>
     <div class="mb-3">
         <label for="last_name">Apellidos</label>
         <input type="text" placeholder="Introduce los apellidos" class="form-control" name="last_name" formControlName="last_name">
+        @if(checkControl('last_name', 'required')){
+            <p class="error">El campo es obligatorio</p>
+            }
+            @if(checkControl('last_name', 'minlength')){
+            <p class="error">El campo tiene que tener al menos 4 caracteres</p>
+            }
     </div>
     <div class="mb-3">
         <label for="username">Nombre de usuario</label>
         <input type="text" placeholder="Introduce el nombre de usuario" class="form-control" name="username" formControlName="username">
+        @if(checkControl('username', 'required')){
+            <p class="error">El campo es obligatorio</p>
+            }
+            @if(checkControl('username', 'minlength')){
+            <p class="error">El campo tiene que tener al menos 8 caracteres</p>
+            }
     </div>
+    
     <div class="mb-3">
         <label for="email">Email</label>
         <input type="email" placeholder="Introduce el email"  class="form-control" name="email" formControlName="email">
-    </div>
+        @if(checkControl('email', 'required')){
+            <p class="error">Campo obligatorio</p>
+            }
+            @if(checkControl('email', 'pattern')){
+            <p class="error">El email tiene que ser correcto</p>
+            }
+          </div>
     <div class="mb-3">
         <label for="image">Imagen</label>
         <input type="text" placeholder="Introduce la url de la imagen" class="form-control" name="imagen" formControlName="image">
     </div>
+ 
+     
+     <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" id="password" class="form-control" formControlName="password">
+        @if(checkControl('password', 'required')){
+        <p class="error">Campo Obligatorio</p>
+        }
+        @if(checkControl('password', 'minlength')){
+        <p class="error">Longitud minima 8 caracteres</p>
+        }
+        @if(checkControl('password', 'maxlength')){
+        <p class="error">Longitud maxima 16 caracteres</p>
+        }
+      </div>
+  
+      <div class="mb-3">
+        <label for="repitepassword" class="form-label">Repite Password</label>
+        <input type="password" id="repitepassword" class="form-control" formControlName="repitepassword">
+      </div>
+    
     <div class="mb-3">
-        <label for="password">Contraseña</label>
-        <input type="password" placeholder="Introduce la contraseña" class="form-control" name="password" formControlName="password">
-    </div>
+        <input type="submit" value="Enviar" class="btn btn-danger" [disabled]="userForm.invalid">    </div>
 </form>
 
 

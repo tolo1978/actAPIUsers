@@ -4,7 +4,7 @@
       <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
       <p class="card-text">{{user.email}}</p>
     </div>
-    <div class="d-flex gap-2 mx-3 mb-3 justify-content-center">
-        <app-buttons [id]="user._id"></app-buttons>
+    <div class="px-3">
+        <app-buttons [id]="user._id" [return]="false"></app-buttons>
     </div>
   </div>
