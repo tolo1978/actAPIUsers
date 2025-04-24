@@ -12,6 +12,18 @@ export class ButtonsComponent {
   @Input() id: string | undefined = "";
   @Input() return: boolean = false;
   UserService = inject(UsersService);
+
+   async deleteuser(id: string | undefined) {
+    if (id)
+      try {
+        let response: any = await this.UserService.delete(id);
+        console.log(response)
+  
+      } catch (error) {
+        console.error(error)
+    }
+
+  }
   
   
 

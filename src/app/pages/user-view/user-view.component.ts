@@ -2,6 +2,8 @@ import { Component, inject, Input } from '@angular/core';
 import { ButtonsComponent } from '../../components/buttons/buttons.component';
 import { Iuser } from '../../interfaces/iuser.interface';
 import { UsersService } from '../../services/users.service';
+import { toast} from 'ngx-sonner';
+
 
 @Component({
   selector: 'app-user-view',
@@ -21,8 +23,8 @@ export class UserViewComponent {
       this.user = await this.userService.getbyID(id)
       console.log(this.user)
 
-    } catch (error) {
-      console.log(error)
+    } catch (error: any) {
+      toast.error(error)
     }
   }
 
