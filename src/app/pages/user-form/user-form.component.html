@@ -1,3 +1,4 @@
+<h1 class="mb-3">{{title}}</h1>
 <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
     <input type="hidden" formControlName="id">
 
@@ -64,7 +65,7 @@
 
     
     <div class="mb-3">
-        <input type="submit" value="Enviar" class="btn btn-danger" [disabled]="userForm.invalid">    </div>
+        <input type="submit" value="Enviar" class="btn btn-danger" [value]="id ? 'Actualizar' : 'Registrar'">    </div>
 </form>
 
 
