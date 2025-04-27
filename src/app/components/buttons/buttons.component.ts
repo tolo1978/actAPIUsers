@@ -20,9 +20,8 @@ export class ButtonsComponent {
       try {
         let response: any = await this.UserService.delete(id);
         toast.error('Se ha borrado el usuario')
-
-
-        console.log(response)
+        
+        // console.log(response)
   
       } catch (error) {
         console.error(error)

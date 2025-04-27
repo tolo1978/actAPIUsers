@@ -1,4 +1,6 @@
 <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
+    <input type="hidden" formControlName="id">
+
     <div class="mb-3">
         <label for="first_name">Nombre</label>
         <input type="text" placeholder="Introduce el nombre" class="form-control" name="first_name" formControlName="first_name">
@@ -59,11 +61,7 @@
         <p class="error">Longitud maxima 16 caracteres</p>
         }
       </div>
-  
-      <div class="mb-3">
-        <label for="repitepassword" class="form-label">Repite Password</label>
-        <input type="password" id="repitepassword" class="form-control" formControlName="repitepassword">
-      </div>
+
     
     <div class="mb-3">
         <input type="submit" value="Enviar" class="btn btn-danger" [disabled]="userForm.invalid">    </div>

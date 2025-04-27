@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import {AbstractControl, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import {FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { UsersService } from '../../services/users.service';
+import { toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-user-form',
@@ -8,7 +10,10 @@ import {AbstractControl, FormGroup, Validators, FormControl, ReactiveFormsModule
   styleUrl: './user-form.component.css'
 })
 export class UserFormComponent {
+  userrService = inject(UsersService);
+
   userForm: FormGroup = new FormGroup ({
+    id: new FormControl(null, []),
     first_name: new FormControl('', [
       Validators.required,
       Validators.minLength(3)
@@ -19,7 +24,7 @@ export class UserFormComponent {
     ]),
     username: new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(6)
     ]),
     email: new FormControl('', [
       Validators.required,
@@ -34,13 +39,17 @@ export class UserFormComponent {
         Validators.minLength(8),
         Validators.maxLength(16)
       ]),
-      repitepassword: new FormControl("", []),
       }, [])
   
 
-    getDataForm() {
-      console.log(this.userForm.value)
-      this.userForm.reset()
+    async getDataForm() {
+      let response = await this.userrService.insert(this.userForm.value)
+      console.log(response)
+      if (response.id) {
+        toast.success('Usuario insertado correctamente')
+        this.userForm.reset()
+
+      }
     }
 
     checkControl(controlName: string, errorName: string): boolean | undefined {
