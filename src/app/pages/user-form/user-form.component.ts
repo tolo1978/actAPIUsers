@@ -68,25 +68,43 @@ export class UserFormComponent {
         Validators.maxLength(16)
       ]),
       }, [])
+     
+      checkControl(controlName: string, errorName: string): boolean | undefined {
+        return this.userForm.get(controlName)?.hasError(errorName) && this.userForm.get(controlName)?.touched
+      }
   
 
-    async getDataForm() {
-      try {
+      async getDataForm() {
+        let response: Iuser | any;
         
+        try {
+          if (this.userForm.value.id) {
+            // Actualizar
+            response = await this.userService.update(this.userForm.value.id, this.userForm.value);
+            toast.success('Usuario actualizado correctamente');
+          } else {
+            // Insertar
+            response = await this.userService.insert(this.userForm.value);
+            toast.success('Usuario insertado correctamente');
+          }
+      
+          console.log(response);
+          
+          if (response.id) {
+            this.userForm.reset();
+          }
+      
+        } catch (error: any) {
+          console.error(error);
+          toast.error('Error al guardar el usuario');
+        }
       }
-      let response = await this.userService.insert(this.userForm.value)
-      console.log(response)
-      if (response.id) {
-        toast.success('Usuario insertado correctamente')
-        this.userForm.reset()
 
-      }
-    }
 
-    checkControl(controlName: string, errorName: string): boolean | undefined {
-      return this.userForm.get(controlName)?.hasError(errorName) && this.userForm.get(controlName)?.touched
-    }
 
   }
+
+
+
 
 
